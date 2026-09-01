@@ -1,0 +1,11 @@
+{
+  "name": "Template 3",
+  "version": "1.2.0",
+  "direction": "Clássico, luminoso e editorial",
+  "recommendedFor": "Escritórios que desejam transmitir tradição e sofisticação",
+  "defaultTheme": {
+    "primary": "#a9874f",
+    "secondary": "#f3efe6"
+  },
+  "features": ["hero", "services", "profile", "faq", "whatsapp", "location"]
+}

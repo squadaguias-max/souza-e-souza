@@ -1,0 +1,1 @@
+export const defaultBrand={logoText:"S&S",colors:{primary:"#c6a04e",primaryStrong:"#99752f",accent:"#e4cf91",surface:"#ffffff",background:"#f8f5ee",text:"#353334",muted:"#746f69"},fonts:{display:"Georgia, 'Times New Roman', serif",body:"Inter, Arial, sans-serif"},radius:"4px"};

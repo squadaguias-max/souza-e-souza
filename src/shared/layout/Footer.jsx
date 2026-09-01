@@ -1,0 +1,6 @@
+import { templateConfig as site } from "../../config/template.config";
+import logo from "../../assets/logo.png";
+
+export function Footer() {
+  return <footer><div className="container footer-main"><div className="footer-brand"><img className="footer-brand-logo" src={logo} alt="Souza & Souza Advogados Associados" /><strong>{site.brand.name}</strong><span>{site.brand.oab}</span><p>Clareza, responsabilidade e atenção a cada caso.</p></div><div><b>NAVEGAÇÃO</b><a href="#escritorio">Escritório</a><a href="#atuacao">Atendimento</a><a href="#faq">FAQ</a><a href="#localizacao">Localização</a></div><div><b>CONTATO</b>{site.contact.phone && <a href={`tel:+${site.contact.phone}`}>{site.contact.phoneLabel}</a>}<span>{site.office.address}</span><span>{site.office.district}</span></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} {site.brand.name}.</span><span>Este material tem caráter meramente informativo e não constitui publicidade profissional nos termos do Provimento nº 205/2021 do CFOAB. As informações aqui veiculadas não garantem resultados específicos.</span></div><a className="developed-by" href="https://somos4juris.com.br/" target="_blank" rel="noopener noreferrer">Desenvolvido por 4Juris</a></footer>;
+}

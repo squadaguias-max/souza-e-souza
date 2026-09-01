@@ -1,0 +1,70 @@
+{
+  "project": {
+    "name": "Souza e Souza",
+    "displayName": "Souza & Souza Advogados Associados",
+    "conversionAction": "WhatsApp",
+    "slug": "souza-e-souza",
+    "sourceTemplate": "Template 3 — Advocacia Clássica",
+    "sourceVersion": "1.2.0"
+  },
+  "professional": {
+    "name": "Souza & Souza",
+    "officeName": "Souza & Souza Advogados Associados",
+    "oab": "OAB: enviar depois",
+    "area": "Atendimento jurídico responsável",
+    "city": "Boa Vista/RR",
+    "biography": "Escritório de advocacia com atendimento pautado pela escuta, clareza e análise individual de cada caso."
+  },
+  "contact": {
+    "whatsapp": "5595991390860",
+    "whatsappMessage": "Olá! Vim pelo site da Souza & Souza Advogados Associados e gostaria de solicitar um atendimento.",
+    "email": "",
+    "linkedin": ""
+  },
+  "location": {
+    "city": "Boa Vista/RR",
+    "regions": "Centro · Boa Vista — RR · CEP 69301-440",
+    "address": "Rua General Penha Brasil, 102",
+    "hours": "Atendimento mediante agendamento",
+    "mapsQuery": "Rua General Penha Brasil, 102, Centro, Boa Vista, Roraima, 69301-440"
+  },
+  "theme": {
+    "primary": "#c6a04e",
+    "secondary": "#353334",
+    "style": "Clássico contemporâneo"
+  },
+  "hero": {
+    "title": "Orientação jurídica com clareza e responsabilidade.",
+    "description": "Atendimento cuidadoso e análise individual para compreender a sua situação e indicar os caminhos jurídicos adequados.",
+    "cta": "Fale pelo WhatsApp"
+  },
+  "audience": "Pessoas e empresas que buscam orientação jurídica em Boa Vista e região",
+  "services": [
+    {
+      "title": "Análise individual",
+      "description": "Compreensão do contexto e avaliação inicial das particularidades de cada situação."
+    },
+    {
+      "title": "Orientação preventiva",
+      "description": "Informação jurídica clara para apoiar decisões e prevenir riscos."
+    },
+    {
+      "title": "Análise documental",
+      "description": "Leitura cuidadosa dos documentos relevantes para a orientação do caso."
+    },
+    {
+      "title": "Atendimento personalizado",
+      "description": "Comunicação próxima, responsável e adequada a cada necessidade."
+    }
+  ],
+  "assets": "Logo oficial fornecida pelo cliente em LOGO-SS-PNG.png",
+  "approval": {
+    "responsible": "Responsável a definir",
+    "approved": false
+  },
+  "pending": [
+    "Informar o número de registro da OAB",
+    "Confirmar as áreas específicas de atuação",
+    "Aprovar os textos antes da publicação"
+  ]
+}

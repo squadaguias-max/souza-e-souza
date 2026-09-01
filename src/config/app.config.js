@@ -1,0 +1,2 @@
+import { defaultBrand } from "./brand.config";
+export const appConfig={name:"Souza & Souza Advogados Associados",description:"Atendimento jurídico responsável, claro e individualizado em Boa Vista/RR.",brand:defaultBrand,features:{catalog:false,account:false,admin:false},navigation:[{label:"Início",to:"#inicio"},{label:"Atendimento",to:"#atuacao"},{label:"O escritório",to:"#escritorio"},{label:"FAQ",to:"#faq"}]};
