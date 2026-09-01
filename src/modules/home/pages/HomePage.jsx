@@ -1,4 +1,4 @@
-import { createElement, useState } from "react";
+import { createElement } from "react";
 import {
   AlarmClock,
   ArrowRight,
@@ -33,21 +33,7 @@ const faqs = [
 ];
 
 export function HomePage() {
-  const [phone, setPhone] = useState("");
   const practices = site.services.map((service, index) => [serviceIcons[index % serviceIcons.length], service.title, service.description]);
-
-  function maskPhone(event) {
-    const digits = event.currentTarget.value.replace(/\D/g, "").slice(0, 11);
-    const formatted = digits.replace(/^(\d{0,2})(\d{0,5})(\d{0,4}).*/, (_, ddd, prefix, suffix) => [ddd && `(${ddd}`, ddd.length === 2 ? ") " : "", prefix, suffix && `-${suffix}`].join(""));
-    setPhone(formatted);
-  }
-
-  function schedule(event) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const message = `Olá! Vim pelo site da Souza & Souza e gostaria de solicitar um atendimento.\nNome: ${data.get("nome")}\nTelefone: ${data.get("telefone")}\nAssunto: ${data.get("assunto")}\nMensagem: ${data.get("mensagem") || "Não informada"}`;
-    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
-  }
 
   const mapQuery = encodeURIComponent(site.office.mapsQuery);
 
@@ -59,18 +45,24 @@ export function HomePage() {
           <span className="gold-label">{site.brand.tagline}</span>
           <h1>{site.hero.title}</h1>
           <p>{site.hero.description}</p>
-          <a href="#escritorio">Conheça nosso atendimento <ArrowRight /></a>
+          <div className="hero-actions">
+            <a className="hero-primary" href={whatsappUrl()} target="_blank" rel="noreferrer"><MessageCircle /> Falar pelo WhatsApp <ArrowRight /></a>
+            <a className="hero-secondary" href="#escritorio">Conheça o escritório <ArrowRight /></a>
+          </div>
+          <div className="hero-assurances" aria-label="Informações do atendimento">
+            <span><MapPin /> Boa Vista/RR</span>
+            <span><AlarmClock /> Mediante agendamento</span>
+            <span><ShieldCheck /> Análise individual</span>
+          </div>
         </div>
-        <form className="appointment-card" onSubmit={schedule}>
-          <span>SOLICITE UM ATENDIMENTO</span>
-          <h2>Como podemos orientar você?</h2>
-          <label>Nome<input name="nome" required maxLength={80} autoComplete="name" placeholder="Seu nome completo" /></label>
-          <label>Telefone<input name="telefone" required type="tel" inputMode="numeric" autoComplete="tel" minLength={14} maxLength={15} pattern={"\\(\\d{2}\\) \\d{4,5}-\\d{4}"} value={phone} onChange={maskPhone} placeholder="(00) 00000-0000" /></label>
-          <label>Assunto<select name="assunto" required defaultValue=""><option value="" disabled>Selecione uma opção</option>{practices.map(([, title]) => <option key={title}>{title}</option>)}</select></label>
-          <label>Mensagem<textarea name="mensagem" rows="3" maxLength={500} placeholder="Conte brevemente sua necessidade" /></label>
-          <button type="submit">Continuar no WhatsApp <ArrowRight /></button>
-          <small>Os dados preenchidos serão usados apenas para montar sua mensagem no WhatsApp.</small>
-        </form>
+        <aside className="hero-contact-card">
+          <div className="hero-card-icon"><MessageCircle /></div>
+          <span>ATENDIMENTO DIRETO</span>
+          <h2>Seu primeiro passo começa com uma conversa clara.</h2>
+          <p>Entre em contato para apresentar sua necessidade e receber as orientações iniciais.</p>
+          <div className="hero-card-meta"><span><small>WHATSAPP</small>{site.contact.phoneLabel}</span><span><small>LOCALIZAÇÃO</small>Centro · Boa Vista/RR</span></div>
+          <a href={whatsappUrl()} target="_blank" rel="noreferrer">Solicitar atendimento <ArrowRight /></a>
+        </aside>
       </div>
     </section>
 
