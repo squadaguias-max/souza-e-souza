@@ -1,95 +1,29 @@
-import { createElement } from "react";
-import {
-  AlarmClock,
-  ArrowRight,
-  BriefcaseBusiness,
-  Check,
-  Clock3,
-  FileSearch,
-  Handshake,
-  MapPin,
-  MessageCircle,
-  Phone,
-  Scale,
-  ShieldCheck,
-  UsersRound,
-} from "lucide-react";
-import { templateConfig as site, whatsappUrl } from "../../../config/template.config";
-import logo from "../../../assets/logo.png";
+import { ArrowRight, BriefcaseBusiness, CalendarClock, Check, ChevronRight, CircleDollarSign, Clock3, FileText, MessageCircle, ShieldCheck, UserRoundCheck, X } from "lucide-react";
+import { whatsappUrl } from "../../../config/template.config";
 
-const serviceIcons = [Scale, ShieldCheck, FileSearch, Handshake];
-
-const benefits = [
-  "Escuta atenta e análise individual do caso",
-  "Informações claras sobre possibilidades e próximos passos",
-  "Comunicação responsável durante o atendimento",
-];
-
+const eligibility = ["Trabalhou sem carteira assinada.", "Cumpria horário.", "Recebia ordens de superiores.", "Trabalhava para apenas uma empresa.", "Fazia a mesma função dos empregados registrados.", "Foi contratado como PJ ou MEI, mas trabalhava como funcionário.", "Precisava justificar faltas ou pedir autorização."];
+const exclusions = ["Prestava serviços para vários clientes.", "Fazia seus próprios horários.", "Não tinha supervisão.", "Seu caso já foi analisado e descartado por outro advogado."];
+const rights = [[FileText, "Registro retroativo", "na Carteira de Trabalho"], [CircleDollarSign, "FGTS", "não depositado"], [CalendarClock, "Férias", "+ 1/3"], [CalendarClock, "13º salário", ""], [BriefcaseBusiness, "Verbas", "rescisórias"], [ShieldCheck, "Regularização", "do INSS"]];
 const faqs = [
-  ["Como funciona o primeiro atendimento?", "O primeiro contato serve para compreender sua necessidade e organizar as informações iniciais. A orientação jurídica depende da análise individual do caso e dos documentos pertinentes."],
-  ["O atendimento precisa ser agendado?", "Sim. O atendimento é realizado mediante agendamento para que cada caso receba a atenção necessária."],
-  ["Quais documentos preciso apresentar?", "Após o contato inicial, indicaremos apenas os documentos necessários para a análise da sua situação."],
-  ["Como são definidos os honorários?", "Os honorários consideram o escopo e a complexidade da atuação e são apresentados antes da contratação."],
+  ["Trabalhei como PJ. Posso ter direito ao reconhecimento do vínculo?", "Sim. O fato de existir um contrato como Pessoa Jurídica (PJ) não impede, por si só, o reconhecimento do vínculo empregatício. O que será analisado é como a relação acontecia na prática. Se havia subordinação, horário, pessoalidade e remuneração, seu caso pode ser analisado."],
+  ["Fui obrigado(a) a abrir um MEI para trabalhar. Ainda posso buscar meus direitos?", "Pode. Em muitos casos, o MEI foi utilizado apenas como forma de contratação, mas a rotina de trabalho era igual à de um empregado registrado. Cada situação deve ser analisada individualmente."],
+  ["Já saí da empresa há mais de um ano. Ainda dá tempo?", "Depende. A legislação estabelece prazos para ingressar com a ação. Quanto antes sua situação for analisada, maiores são as chances de preservar seus direitos. O ideal é não deixar para depois."],
+  ["Ainda trabalho na empresa. Posso procurar orientação jurídica?", "Sim. Não é necessário esperar o encerramento do vínculo para buscar orientação. Muitos trabalhadores procuram um advogado enquanto ainda estão empregados para entender quais são seus direitos e quais caminhos podem ser adotados."],
+  ["Como posso comprovar que trabalhei sem carteira assinada?", "Cada caso é diferente. Mensagens, e-mails, comprovantes de pagamento, fotos, registros de acesso, conversas por aplicativos e testemunhas são alguns exemplos de elementos que podem auxiliar na análise."],
+  ["Preciso ir até o escritório?", "Não. Todo o atendimento pode ser realizado de forma 100% online, permitindo que pessoas de qualquer região do Brasil recebam orientação jurídica com praticidade."],
+  ["Minhas informações ficarão em sigilo?", "Sim. Todas as informações compartilhadas são tratadas com confidencialidade e sigilo profissional, conforme os deveres éticos da advocacia."],
+  ["Quanto custa para analisar meu caso?", "A análise inicial serve para verificar se o seu caso pode ser atendido pelo escritório. Após essa avaliação, você receberá todas as orientações sobre os próximos passos e eventuais condições de contratação."],
+  ["Se meu caso não for viável, vocês informam mesmo assim?", "Sim. O objetivo da análise é oferecer um retorno claro e transparente. Se não houver viabilidade jurídica, você será informado de forma objetiva, evitando expectativas indevidas."],
 ];
+const Cta = ({ children, className = "" }) => <a className={`cta ${className}`} href={whatsappUrl("Olá! Quero verificar se meu caso de vínculo empregatício ainda está dentro do prazo.")} target="_blank" rel="noreferrer"><MessageCircle />{children}<ArrowRight /></a>;
 
-export function HomePage() {
-  const practices = site.services.map((service, index) => [serviceIcons[index % serviceIcons.length], service.title, service.description]);
-
-  const mapQuery = encodeURIComponent(site.office.mapsQuery);
-
-  return <>
-    <section className="classic-hero" id="inicio">
-      <div className="hero-glow" />
-      <div className="container hero-grid">
-        <div className="hero-copy">
-          <span className="gold-label">{site.brand.tagline}</span>
-          <h1>{site.hero.title}</h1>
-          <p>{site.hero.description}</p>
-          <div className="hero-actions">
-            <a className="hero-primary" href={whatsappUrl()} target="_blank" rel="noreferrer"><MessageCircle /> Falar pelo WhatsApp <ArrowRight /></a>
-            <a className="hero-secondary" href="#escritorio">Conheça o escritório <ArrowRight /></a>
-          </div>
-          <div className="hero-assurances" aria-label="Informações do atendimento">
-            <span><MapPin /> Boa Vista/RR</span>
-            <span><AlarmClock /> Mediante agendamento</span>
-            <span><ShieldCheck /> Análise individual</span>
-          </div>
-        </div>
-        <aside className="hero-contact-card">
-          <div className="hero-card-icon"><MessageCircle /></div>
-          <span>ATENDIMENTO DIRETO</span>
-          <h2>Seu primeiro passo começa com uma conversa clara.</h2>
-          <p>Entre em contato para apresentar sua necessidade e receber as orientações iniciais.</p>
-          <div className="hero-card-meta"><span><small>WHATSAPP</small>{site.contact.phoneLabel}</span><span><small>LOCALIZAÇÃO</small>Centro · Boa Vista/RR</span></div>
-          <a href={whatsappUrl()} target="_blank" rel="noreferrer">Solicitar atendimento <ArrowRight /></a>
-        </aside>
-      </div>
-    </section>
-
-    <section className="info-strip" aria-label="Informações rápidas"><div className="container">
-      <div><AlarmClock /><span><small>ATENDIMENTO</small>{site.office.hours}</span></div>
-      <div><Phone /><span><small>WHATSAPP</small>{site.contact.phoneLabel}</span></div>
-      <div><MapPin /><span><small>LOCALIZAÇÃO</small>Centro · Boa Vista/RR</span></div>
-    </div></section>
-
-    <section className="intro-section" id="escritorio">
-      <div className="pattern" />
-      <div className="container">
-        <div className="center-title"><span className="gold-label">SOUZA & SOUZA</span><h2>Atendimento jurídico próximo, técnico e responsável.</h2><p>Cada situação é recebida com atenção, discrição e compromisso com uma comunicação clara.</p></div>
-        <div className="brand-showcase"><img src={logo} alt="Souza & Souza Advogados Associados" /><div><span className="gold-label">NOSSO COMPROMISSO</span><h3>Clareza para decisões importantes.</h3><p>Buscamos compreender o contexto antes de indicar qualquer caminho. Cada caso depende de análise individual e não há garantia de resultados.</p></div></div>
-      </div>
-    </section>
-
-    <section className="services-section" id="atuacao"><div className="container"><div className="section-heading"><span className="gold-label">COMO PODEMOS AJUDAR</span><h2>Uma condução cuidadosa desde o primeiro contato.</h2></div><div className="service-grid">{practices.map(([Icon, title, description], index) => <article key={title}><span>0{index + 1}</span>{createElement(Icon)}<h3>{title}</h3><p>{description}</p><a href="#contato">Solicitar atendimento <ArrowRight /></a></article>)}</div><p className="service-note">As áreas jurídicas específicas atendidas pelo escritório serão incluídas após confirmação.</p></div></section>
-
-    <section className="best-section"><div className="container best-grid"><div className="best-visual"><Scale /><p>Ética, clareza e responsabilidade em cada etapa.</p></div><div className="best-copy"><span className="gold-label">NOSSA FORMA DE ATENDER</span><h2>Informação clara para você avançar com segurança.</h2><p>O atendimento é organizado para que você compreenda os próximos passos e possa tomar decisões com mais tranquilidade.</p><div className="benefit-list">{benefits.map((benefit, index) => <div key={benefit}><span>0{index + 1}</span><p>{benefit}</p><Check /></div>)}</div><a className="gold-button" href={whatsappUrl()} target="_blank" rel="noreferrer">Fale com o escritório <ArrowRight /></a></div></div></section>
-
-    <section className="values-section"><div className="container values-grid"><article><Scale /><span>01</span><h3>Rigor técnico</h3><p>Análise cuidadosa e orientação compatível com cada contexto.</p></article><article><UsersRound /><span>02</span><h3>Atendimento próximo</h3><p>Escuta, respeito e comunicação direta em todas as etapas.</p></article><article><BriefcaseBusiness /><span>03</span><h3>Postura responsável</h3><p>Atuação ética, sem promessas de resultado e com transparência.</p></article></div></section>
-
-    <section className="classic-faq" id="faq"><div className="container faq-grid"><div><span className="gold-label">DÚVIDAS FREQUENTES</span><h2>Informação clara desde o início.</h2><p>Respostas gerais sobre o funcionamento do atendimento.</p></div><div className="faq-list">{faqs.map(([question, answer], index) => <details key={question}><summary><span>0{index + 1}</span>{question}<i>+</i></summary><p>{answer}</p></details>)}</div></div></section>
-
-    <section className="classic-contact" id="contato"><div className="container contact-inner"><div><span className="gold-label">PRIMEIRO PASSO</span><h2>Vamos conversar sobre a sua necessidade?</h2><p>O contato inicial é confidencial e não estabelece automaticamente uma relação advogado-cliente.</p></div><a className="gold-button" href={whatsappUrl()} target="_blank" rel="noreferrer"><MessageCircle /> Iniciar conversa <ArrowRight /></a></div></section>
-
-    <section className="classic-location" id="localizacao"><div className="container location-grid"><div className="location-copy"><span className="gold-label">LOCALIZAÇÃO</span><h2>Atendimento no centro de Boa Vista.</h2><p>Recebemos clientes presencialmente mediante agendamento.</p><div><span><MapPin /><span><small>ENDEREÇO</small>{site.office.address}<br />{site.office.district}</span></span><span><Clock3 /><span><small>ATENDIMENTO</small>{site.office.hours}</span></span></div><a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">Abrir rota no Google Maps <ArrowRight /></a></div><div className="map-frame"><iframe title="Localização da Souza & Souza Advogados Associados" src={`https://www.google.com/maps?q=${mapQuery}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div></div></section>
-  </>;
-}
+export function HomePage() { return <>
+  <section className="work-hero" id="inicio"><div className="container work-hero-inner"><div className="work-hero-copy"><span className="eyebrow light">SOUZA & SOUZA ADVOGADOS</span><h1>Trabalhou anos sem carteira assinada e não sabe se ainda dá tempo de agir?</h1><p>A lei estabelece um prazo para reconhecer o vínculo empregatício e cobrar direitos trabalhistas. Descubra em poucos minutos se o seu caso ainda pode ser analisado.</p><Cta>Verificar se meu caso ainda está dentro do prazo</Cta><div className="hero-notes"><span><ShieldCheck /> Atendimento sigiloso</span><span><UserRoundCheck /> Análise individual</span></div></div></div></section>
+  <section className="deadline-section" id="prazo"><div className="container deadline-wrap"><div className="section-intro centered"><span className="eyebrow">PRAZO PARA AGIR</span><h2>Atenção: seu direito pode prescrever.</h2><p>Existe um prazo para buscar o reconhecimento do vínculo empregatício e cobrar direitos trabalhistas.</p></div><div className="deadline-cards"><article><span className="card-mark">01</span><strong>Até <em>2 anos</em></strong><p>Após sair da empresa para entrar com a ação.</p></article><article><span className="card-mark">02</span><strong>Até <em>5 anos</em></strong><p>De direitos podem ser cobrados retroativamente.</p></article></div><p className="deadline-warning"><Clock3 /> Quanto mais tempo passa, mais direitos podem ser perdidos. Se você já saiu da empresa, vale a pena verificar se ainda está dentro do prazo.</p><Cta className="center-cta">Quero saber quanto ainda posso recuperar</Cta></div></section>
+  <section className="qualification" id="seu-caso"><div className="container"><div className="section-intro"><span className="eyebrow">ENTENDA A SUA SITUAÇÃO</span><h2>Seu caso pode ser analisado?</h2><p>Alguns elementos da rotina de trabalho ajudam a identificar se existe a possibilidade de reconhecimento do vínculo.</p></div><div className="qualification-grid"><article className="eligible"><div className="qual-head"><Check /><div><span>SEU CASO PODE SER ANALISADO SE:</span><h3>Havia relação de emprego na prática.</h3></div></div><ul>{eligibility.map(item => <li key={item}><Check />{item}</li>)}</ul></article><article className="not-eligible"><div className="qual-head"><X /><div><span>PROVAVELMENTE NÃO É O SEU CASO SE:</span><h3>Você tinha autonomia na prestação.</h3></div></div><ul>{exclusions.map(item => <li key={item}><X />{item}</li>)}</ul></article></div><Cta className="center-cta">Meu caso se enquadra. Quero enviar para análise.</Cta></div></section>
+  <section className="steps-section" id="como-funciona"><div className="container"><div className="section-intro centered"><span className="eyebrow">COMO FUNCIONA</span><h2>Um caminho simples para analisar sua situação.</h2></div><div className="steps-grid"><article><span>01</span><MessageCircle /><h3>Você envia sua situação</h3><p>Conte como era sua rotina de trabalho pelo WhatsApp e envie, se tiver, documentos, mensagens, comprovantes ou outras provas relacionadas ao caso.</p></article><ChevronRight /><article><span>02</span><FileText /><h3>Analisamos seu caso</h3><p>Nossa equipe analisa a documentação, as provas, o prazo para a ação e a viabilidade jurídica do reconhecimento do vínculo empregatício.</p></article><ChevronRight /><article><span>03</span><UserRoundCheck /><h3>Você recebe um retorno</h3><p>Informamos se o caso apresenta viabilidade e orientamos sobre os próximos passos.</p></article></div><Cta className="center-cta">Iniciar minha análise agora</Cta></div></section>
+  <section className="rights-section" id="direitos"><div className="container"><div className="section-intro"><span className="eyebrow">DIREITOS QUE PODEM SER ANALISADOS</span><h2>O que poderá ser discutido caso o vínculo seja reconhecido.</h2></div><div className="rights-grid">{rights.map(([Icon, title, sub]) => <article key={title}><Icon /><h3>{title}</h3>{sub && <p>{sub}</p>}</article>)}</div><p className="legal-note">Cada situação é analisada individualmente. A viabilidade e os direitos aplicáveis dependem das particularidades do caso.</p></div></section>
+  <section className="about-section" id="escritorio"><div className="container about-grid"><div className="about-mark"><span>S&S</span><p>Direito do<br />Trabalho</p></div><div><span className="eyebrow">QUEM SOMOS</span><h2>Conheça o Souza e Souza Advogados</h2><p>O Souza e Souza Advogados é um escritório com atuação em Direito do Trabalho, dedicado à análise de casos de reconhecimento de vínculo empregatício e defesa dos direitos dos trabalhadores.</p><p>Nossa equipe realiza uma avaliação individualizada de cada situação, analisando documentos, provas e a legislação aplicável para oferecer uma orientação jurídica clara, transparente e personalizada.</p><p>Atendemos clientes de forma 100% online em todo o Brasil, sempre com sigilo, ética e compromisso em cada atendimento.</p><div className="about-seals"><span><ShieldCheck /> Sigilo profissional</span><span><UserRoundCheck /> Atendimento online</span></div></div></div></section>
+  <section className="faq-section" id="faq"><div className="container faq-grid"><div className="faq-aside"><span className="eyebrow">PERGUNTAS FREQUENTES</span><h2>Suas dúvidas, respondidas com clareza.</h2><p>Não encontrou o que precisa? Envie sua situação para uma análise inicial.</p><Cta>Falar no WhatsApp</Cta></div><div className="faq-list">{faqs.map(([question, answer], index) => <details key={question}><summary><span>{String(index + 1).padStart(2, "0")}</span>{question}<b>+</b></summary><p>{answer}</p></details>)}</div></div></section>
+  <section className="final-cta" id="contato"><div className="container"><span className="eyebrow light">NÃO DEIXE PARA DEPOIS</span><h2>O prazo continua correndo.</h2><p>Quanto antes seu caso for analisado, maiores são as chances de preservar seus direitos.</p><Cta className="cta-white">Verificar meu prazo e enviar meu caso</Cta><div className="trust-row"><span><Check /> Atendimento personalizado</span><span><Check /> Sigilo profissional</span><span><Check /> Atendimento 100% online</span><span><Check /> Análise inicial de prazo e viabilidade</span></div></div></section>
+</>; }
