@@ -5,8 +5,9 @@ import { Footer } from "./Footer";
 
 export function AppShell({ children }) {
   return <div className="min-h-screen">
+    <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
     <Header />
-    <main>{children}</main>
+    <main id="conteudo-principal">{children}</main>
     <Footer />
     <a className="floating-whatsapp" href={whatsappUrl()} target="_blank" rel="noreferrer" aria-label="Falar com a Souza & Souza pelo WhatsApp">
       <MessageCircle />

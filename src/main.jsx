@@ -16,10 +16,6 @@ applyBrand({
     accent: projectData.theme.secondary,
   },
 });
-document.documentElement.style.setProperty("--gold", projectData.theme.primary);
-document.documentElement.style.setProperty("--dark", projectData.theme.secondary);
-document.documentElement.style.setProperty("--ink", projectData.theme.secondary);
-document.documentElement.style.setProperty("--black", projectData.theme.secondary);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode><AppShell><HomePage /></AppShell></StrictMode>,
